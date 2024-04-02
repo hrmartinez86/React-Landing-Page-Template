@@ -19,13 +19,28 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 
 const App = () => {
   const [landingPageData, setLandingPageData] = useState({});
+  const [positions, setPositions] = useState([]);
+  useEffect(() => {
+    fetchPositions(); // Llama a la función fetchPositions cuando el componente se monta
+  }, []);
+
+  const fetchPositions = async () => {
+    try {
+      const response = await fetch('http://localhost:4010/api/profession'); // Realiza la solicitud a la API
+      const data = await response.json(); // Convierte la respuesta en formato JSON
+      console.log(data);
+      setPositions(data.Profession); // Actualiza el estado con las posiciones recuperadas
+    } catch (error) {
+      console.error('Error fetching positions:', error);
+    }
+  };
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
 
   return (
     <div>
-      <Navigation />
+      <Navigation positions={positions} />
       <Header data={landingPageData.Header} />
       <Features data={landingPageData.Features} />
       <About data={landingPageData.About} />
