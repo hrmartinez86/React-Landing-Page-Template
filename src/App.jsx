@@ -26,7 +26,7 @@ const App = () => {
 
   const fetchPositions = async () => {
     try {
-      const response = await fetch('http://localhost:4010/api/profession'); // Realiza la solicitud a la API
+      const response = await fetch('http://localhost:4000/api/profession'); // Realiza la solicitud a la API
       const data = await response.json(); // Convierte la respuesta en formato JSON
       console.log(data);
       setPositions(data.Profession); // Actualiza el estado con las posiciones recuperadas
