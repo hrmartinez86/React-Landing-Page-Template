@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Navigation = ({positions}) => {
+export const Navigation = ({ positions }) => {
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
       <div className="container">
@@ -27,14 +27,11 @@ export const Navigation = ({positions}) => {
           id="bs-example-navbar-collapse-1"
         >
           <ul className="nav navbar-nav navbar-right">
-            {/* <li>
-              <a href="#features" className="page-scroll">
-                Features
-              </a>
-            </li> */}
-            {positions.map(position => (
-            <li key={position.id}><a href="#features" >{position.name}</a></li>
-          ))}
+            {positions.map((position) => (
+              <li key={position.id}>
+                <a href="#features">{position.name}</a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
