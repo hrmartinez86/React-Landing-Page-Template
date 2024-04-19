@@ -11,6 +11,7 @@ import { Contact } from "./components/contact";
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
 import "./App.css";
+import { Results } from "./components/results";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -18,8 +19,12 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 });
 
 const App = () => {
+  // Datos de landing page
   const [landingPageData, setLandingPageData] = useState({});
+  
   const [positions, setPositions] = useState([]);
+  const [results,setResults]=useState([]);
+
   useEffect(() => {
     fetchPositions(); // Llama a la función fetchPositions cuando el componente se monta
   }, []);
@@ -34,14 +39,29 @@ const App = () => {
       console.error('Error fetching positions:', error);
     }
   };
+  
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
 
+  const fetchData=async(option)=>{
+    try {
+      const response=await fetch(`http://localhost:4000/api/childProfession?id_profession=${option}`);
+      const data=await response.json();
+      setResults(data);
+    } catch (error) {
+      console.error('Error al obtener datos:',error);
+    }
+  }
+
+  const handleOptions=(option)=>{
+    fetchData(option);
+  }
   return (
     <div>
-      <Navigation positions={positions} />
+      <Navigation positions={positions} onOptionClick={handleOptions} />
       <Header data={landingPageData.Header} />
+      <Results data={results}/>
       <Features data={landingPageData.Features} />
       <About data={landingPageData.About} />
       <Services data={landingPageData.Services} />

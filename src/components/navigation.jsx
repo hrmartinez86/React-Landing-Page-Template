@@ -1,6 +1,9 @@
 import React from "react";
 
-export const Navigation = ({ positions }) => {
+export const Navigation = ({ positions,onOptionClick }) => {
+  const handleClick=(option)=>{
+    onOptionClick(option);
+  }
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
       <div className="container">
@@ -28,8 +31,8 @@ export const Navigation = ({ positions }) => {
         >
           <ul className="nav navbar-nav navbar-right">
             {positions.map((position) => (
-              <li key={position.id}>
-                <a href="#features">{position.name}</a>
+              <li onClick={()=>handleClick(position.id)} key={position.id}>
+                <a href="#results">{position.name}</a>
               </li>
             ))}
           </ul>
