@@ -48,7 +48,8 @@ const App = () => {
     try {
       const response=await fetch(`http://localhost:4000/api/childProfession?id_profession=${option}`);
       const data=await response.json();
-      setResults(data);
+      console.log(data.data);
+      setResults(data.data);
     } catch (error) {
       console.error('Error al obtener datos:',error);
     }
@@ -62,13 +63,13 @@ const App = () => {
       <Navigation positions={positions} onOptionClick={handleOptions} />
       <Header data={landingPageData.Header} />
       <Results data={results}/>
-      <Features data={landingPageData.Features} />
+      {/* <Features data={landingPageData.Features} />
       <About data={landingPageData.About} />
       <Services data={landingPageData.Services} />
       <Gallery data={landingPageData.Gallery} />
       <Testimonials data={landingPageData.Testimonials} />
       <Team data={landingPageData.Team} />
-      <Contact data={landingPageData.Contact} />
+      <Contact data={landingPageData.Contact} />  */}
     </div>
   );
 };
