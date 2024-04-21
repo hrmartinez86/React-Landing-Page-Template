@@ -58,11 +58,14 @@ const App = () => {
   const handleOptions=(option)=>{
     fetchData(option);
   }
+  const handleChildOption=(option)=>{
+    fetchData(option);
+  }
   return (
     <div>
       <Navigation positions={positions} onOptionClick={handleOptions} />
       <Header data={landingPageData.Header} />
-      <Results data={results}/>
+      <Results data={results} onOptionClick={handleChildOption}/>
       {/* <Features data={landingPageData.Features} />
       <About data={landingPageData.About} />
       <Services data={landingPageData.Services} />
