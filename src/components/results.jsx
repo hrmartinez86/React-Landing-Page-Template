@@ -1,14 +1,18 @@
-export const Results = ({ data }) => {
+export const Results = ({ data ,onOptionClick}) => {
+  const handleClick=(option)=>{
+    console.log(option);
+    onOptionClick(option);
+  }
   return (
     <div>
       <h1>
-        {data?console.log(data):console.log("vacio")}
         {data
           ? data.map((d, i) => (
               <div
                 key={`${d.name}-${i}`}
                 className="col-md-3 col-sm-6 team"
                 id="Results"
+                onClick={()=>handleClick(d.id)}
               >
                 <div className="thumbnail">
                   {" "}
