@@ -616,3 +616,39 @@ label {
     margin: 50px 0;
   }
 }
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  display: flex; /* Para que los elementos dentro de la tarjeta se coloquen en una fila */
+  width: calc(25% - 20px); /* Ancho del 25% menos el espacio entre las tarjetas */
+  margin-right: 20px; /* Espacio entre las tarjetas */
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Bordes redondeados */
+  overflow: hidden; /* Ocultar el contenido que se desborda */
+  margin-bottom: 10px;
+}
+
+.card img {
+  width: 80px; /* Ancho de la imagen */
+  height: auto; /* Altura automática */
+  border-radius: 50%; /* Hacer que la imagen sea circular */
+  margin-right: 20px; /* Espacio a la derecha de la imagen */
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.card-text {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
