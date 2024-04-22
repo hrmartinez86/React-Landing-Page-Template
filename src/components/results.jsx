@@ -1,6 +1,5 @@
 export const Results = ({ data ,onOptionClick}) => {
   const handleClick=(option)=>{
-    console.log(option);
     onOptionClick(option);
   }
   return (

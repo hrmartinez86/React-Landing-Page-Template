@@ -1,8 +1,6 @@
 export const ResultsChildProfession = ({ data }) => {
   return (
     <div>
-      results-child-profession
-      {console.log(data)}
       {data ? (
         data.map((d, i) => (
           <div
