@@ -1,6 +1,10 @@
 import React from "react";
 
-export const Modal = ({ onClose }) => {
+export const Modal = ({ onClose,data }) => {
+  const handleWhatsAppClick = () => {
+    // Abrir la aplicación de WhatsApp con el número de teléfono
+    window.open(`https://api.whatsapp.com/send?phone=${data.phone}`);
+  };
   const handleClose = () => {
     onClose();
   };
@@ -15,7 +19,9 @@ export const Modal = ({ onClose }) => {
         <button className="close-button" onClick={handleClose}>
           Cerrar
         </button>
-        <h1>kmkmklklms</h1>
+        <h1>{data.name}</h1>
+        <h2><a href={`tel:${data.phone}`} onClick={handleWhatsAppClick}>{data.phone}</a></h2>
+        <p>{data.skills}</p>
       </div>
     </div>
   );
