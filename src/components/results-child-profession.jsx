@@ -1,35 +1,35 @@
+import { useState } from "react";
+import { Modal } from "./Modal";
+
 export const ResultsChildProfession = ({ data }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
-    <div className="card-container">
-      {data ? (
-        data.map((d, i) => (
-          <div className="card">
-            <img src={d.image} alt={d.name} />
-            <div className="card-body">
-              <h5 className="card-title">{d.name}</h5>
-              <p className="card-text">Teléfono: {d.phone}</p>
-              <p className="card-text">Profesión: {d.skills}</p>
+    <>
+      <div className="card-container">
+        {data ? (
+          data.map((data, index) => (
+            <div onClick={openModal} className="card">
+              <img src={data.image} alt={data.name} />
+              <div className="card-body">
+                <h5 className="card-title">{data.name}</h5>
+                <p className="card-text">Teléfono: {data.phone}</p>
+                <p className="card-text">Profesión: {data.skills}</p>
+              </div>
             </div>
+          ))
+        ) : (
+          <div>
+            <h3>Sin Resultados</h3>
           </div>
-          // <div
-          //   key={`${d.name}-${i}`}
-          //   className="col-md-3 col-sm-6 team"
-          //   id="Results"
-          // >
-          //   <div className="thumbnail">
-          //     {" "}
-          //     <div className="caption">
-          //       <h4>{d.name}</h4>
-          //       <p>{d.phone}</p>
-          //     </div>
-          //   </div>
-          // </div>
-        ))
-      ) : (
-        <div>
-          <h3>Sin Resultados</h3>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+      {isModalOpen&&(<div><Modal onClose={closeModal} data={data}/></div>)}
+    </>
   );
 };
