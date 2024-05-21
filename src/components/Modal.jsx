@@ -14,7 +14,7 @@ export const Modal = ({ onClose,data }) => {
     e.stopPropagation();
   };
   return (
-    <div className="modal-overlay" onClick={handleClose}>
+    <div className="modal-p" onClick={handleClose}>
       <div className="modal-content" onClick={handleModalClick}>
         <button className="close-button" onClick={handleClose}>
           Cerrar
